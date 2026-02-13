@@ -65,8 +65,8 @@ int main() {
 		-0.5f,  0.5f, 0.0f,   1.0f,1.0f,0.0f, // top left 
 	};
 	unsigned int indices[] = {  // note that we start from 0! *orden de renderizado*
-		3,2,1,// second Triangle
-		//2,0,3,
+		//3,2,1,// second Triangle
+		2,0,3,
 		0,1,3,
 		
 	};
@@ -121,8 +121,8 @@ int main() {
         glBindVertexArray(VAO);
 
 		//1 solo un punto diferente al cero
-        //glPointSize(10); //tamaño punto
-        //glDrawArrays(GL_POINTS,1,1); //a partir de donde y el numero de puntos que tomara
+        glPointSize(10); //tamaño punto
+        glDrawArrays(GL_POINTS,1,1); //a partir de donde y el numero de puntos que tomara
 
 		//2 en una sola linea de comando dibujar los 4 
 		//glPointSize(10); //tamaño punto
@@ -142,8 +142,8 @@ int main() {
         //glDrawElements(GL_TRIANGLES, 3,GL_UNSIGNED_INT,0);//a partir de los indices
 
 		////5 dibujar cuadrado
-		glDrawArrays(GL_TRIANGLES,0,3);
-		glDrawArrays(GL_TRIANGLES, 1, 4);
+		//glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+		//glDrawArrays(GL_TRIANGLES, 0, 3);
 		
 		
         
