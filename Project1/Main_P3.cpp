@@ -222,6 +222,8 @@ int main() {
 		model = glm::rotate( model, 0.5f, glm::vec3( 1.0f, 0.0f, 0.0f ) ); // use to compare orthographic and perspective projection
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		//view = glm::translate( view, glm::vec3( screenWidth / 2, screenHeight / 2,-700.0f ) ); // use with orthographic projection, se aplica a la vista
+
+		
 		
 		
 		GLint modelLoc = glGetUniformLocation(ourShader.Program, "model");
@@ -235,14 +237,26 @@ int main() {
 
 		glBindVertexArray(VAO);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
-		glBindVertexArray(0);//hasta eñ final
+		
 
 
 		//dibujar dos cubros extra, izquierda y derecha, diferente translacion, rotacion, y escala
 
+		model = glm::mat4(1); 
+		model = glm::translate(model, glm::vec3(-3.0f, 0.0f, -10.0f)); // Mover a la izquierda
+		model = glm::rotate(model, 1.0f, glm::vec3(0.0f, 1.0f, 0.0f)); // Rotación continua
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f)); // Un poco más pequeño
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model)); // Mandar nueva matriz al shader
+		glDrawArrays(GL_TRIANGLES, 0, 36); // Dibujar 
 
+		model = glm::mat4(1); 
+		model = glm::translate(model, glm::vec3(3.0f, 0.0f, 0.0f)); 
+		model = glm::rotate(model, 0.8f, glm::vec3(0.0f, 0.0f, 1.0f)); 
+		model = glm::scale(model, glm::vec3(1.2f, 1.2f, 1.2f)); 
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model)); 
+		glDrawArrays(GL_TRIANGLES, 0, 36);
 
-		
+		glBindVertexArray(0);//hasta eñ final
 		
 		
 
@@ -260,5 +274,7 @@ int main() {
   
 
 }
+
+
 
 
